@@ -1,6 +1,7 @@
 package pl.akademiaspecjalistowit.jokeappspring.joke.service;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 import pl.akademiaspecjalistowit.jokeappspring.joke.model.Joke;
 import pl.akademiaspecjalistowit.jokeappspring.joke.service.provider.JokeProvider;
@@ -13,7 +14,7 @@ public class JokeServiceImpl implements JokeService {
 
     public JokeServiceImpl(List<JokeProvider> jokeProviders) {
         if (jokeProviders == null || jokeProviders.isEmpty()) {
-            throw new RuntimeException("Required at least one JokeProvider for the application to run");
+            throw new JokeServiceException("Required at least one JokeProvider for the application to run");
         }
         this.jokeProviders = jokeProviders;
     }

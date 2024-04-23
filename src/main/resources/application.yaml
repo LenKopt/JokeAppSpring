@@ -1,11 +1,11 @@
 spring:
   application:
     name: JokeAppSpring
-
+server:
+  port: 8199
 jokes:
   files:
     pathToJokeFile: src/main/resources/jokes.json
-  externalApi:
-    urlToJokeApi: hhtps://sadadfasd
-
-
+  urls:
+    urlAnyJoke: https://v2.jokeapi.dev/joke/Any
+    urlByCategoryJoke: https://v2.jokeapi.dev/joke/
