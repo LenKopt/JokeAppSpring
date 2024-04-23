@@ -7,7 +7,5 @@ public class JokeDataProviderException extends JokeServiceException {
         super(message);
     }
 
-    public JokeDataProviderException(String message, Throwable cause) {
-        super(message, cause);
-    }
+
 }
