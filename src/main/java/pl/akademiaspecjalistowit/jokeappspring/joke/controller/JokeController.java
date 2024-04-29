@@ -12,12 +12,10 @@ import java.awt.print.Book;
 @RequestMapping("/jokes")
 public class JokeController {
     private JokeService jokeService;
-    //private final JokeEntityRepository jokeEntityRepository;
 
     public JokeController(JokeService jokeService) {
 
         this.jokeService = jokeService;
-        //this.jokeEntityRepository = jokeEntityRepository;
     }
 
     @GetMapping("/joke")
