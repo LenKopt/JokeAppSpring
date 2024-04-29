@@ -1,8 +1,10 @@
 package pl.akademiaspecjalistowit.jokeappspring.joke.service;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 import pl.akademiaspecjalistowit.jokeappspring.joke.model.Joke;
+import pl.akademiaspecjalistowit.jokeappspring.joke.service.provider.JokeDataProvider;
 import pl.akademiaspecjalistowit.jokeappspring.joke.service.provider.JokeProvider;
 
 @Service
@@ -13,7 +15,7 @@ public class JokeServiceImpl implements JokeService {
 
     public JokeServiceImpl(List<JokeProvider> jokeProviders) {
         if (jokeProviders == null || jokeProviders.isEmpty()) {
-            throw new RuntimeException("Required at least one JokeProvider for the application to run");
+            throw new JokeServiceExeption("Required at least one JokeProvider for the application to run");
         }
         this.jokeProviders = jokeProviders;
     }
@@ -30,5 +32,13 @@ public class JokeServiceImpl implements JokeService {
 
     private JokeProvider getJokeProvider() {
         return jokeProviders.get((int) counter++ % jokeProviders.size());
+    }
+
+    public void save(Joke joke) {
+        for (JokeProvider jokeProvider : jokeProviders) {
+            if (jokeProvider instanceof JokeDataProvider) {
+                ((JokeDataProvider) jokeProvider).save(joke);
+            }
+        }
     }
 }

@@ -1,9 +1,11 @@
 package pl.akademiaspecjalistowit.jokeappspring.joke.model;
 
+import lombok.AllArgsConstructor;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
-
+@AllArgsConstructor
 public class Joke implements Serializable {
 
     private UUID id;
@@ -16,7 +18,7 @@ public class Joke implements Serializable {
         this.category = category;
     }
 
-    private Joke() {
+    private Joke(){
         this.id = UUID.randomUUID();
     }
 
@@ -53,4 +55,5 @@ public class Joke implements Serializable {
     public int hashCode() {
         return Objects.hash(content, category);
     }
+
 }

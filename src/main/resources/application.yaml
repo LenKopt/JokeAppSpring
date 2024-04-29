@@ -1,11 +1,20 @@
 spring:
   application:
     name: JokeAppSpring
-
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console.enabled: true
+server:
+  port: 8099
 jokes:
   files:
     pathToJokeFile: src/main/resources/jokes.json
-  externalApi:
-    urlToJokeApi: hhtps://sadadfasd
-
-
+  urls:
+    urlAnyJoke: https://v2.jokeapi.dev/joke/Any
+    urlByCategoryJoke: https://v2.jokeapi.dev/joke/
